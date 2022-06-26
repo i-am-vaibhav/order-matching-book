@@ -23,17 +23,19 @@ public class OrderLogging {
 	private final Logger log = LoggerFactory.getLogger(OrderLogging.class);
 
 	@Around("execution(* com.anvl.order.book.service.OrderMatchingService.*(..))")
-	public void log(ProceedingJoinPoint jp) {
+	public Object log(ProceedingJoinPoint jp) {
 		String methodSignature = jp.getSignature().toString();
 		String arguments = Arrays.deepToString(jp.getArgs());
 		log.info("Method signature {}", methodSignature);
 		log.info("Arguments {}", arguments);
+		Object proceed = null;
 		try {
-			jp.proceed();
+			proceed = jp.proceed();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		log.info("Order completed method {} arguments {}", methodSignature, arguments);
+		return proceed;
 	}
 
 }

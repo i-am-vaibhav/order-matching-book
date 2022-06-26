@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.anvl.order.book.model.BuyOrder;
-import com.anvl.order.book.model.SellOrder;
+import com.anvl.order.book.model.Order;
 import com.anvl.order.book.service.OrderMatchingService;
 
 @RestController
@@ -21,12 +20,12 @@ public class OrderController {
 	}
 
 	@PostMapping("/buy")
-	public ResponseEntity<?> buyOrder(@RequestBody BuyOrder request) {
+	public ResponseEntity<?> buyOrder(@RequestBody Order request) {
 		return orderMatchingService.buyOrder(request);
 	}
 
 	@PostMapping("/sell")
-	public ResponseEntity<?> sellOrder(@RequestBody SellOrder request) {
+	public ResponseEntity<?> sellOrder(@RequestBody Order request) {
 		return orderMatchingService.sellOrder(request);
 	}
 

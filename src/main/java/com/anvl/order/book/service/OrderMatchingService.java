@@ -5,8 +5,7 @@ package com.anvl.order.book.service;
 
 import org.springframework.http.ResponseEntity;
 
-import com.anvl.order.book.model.BuyOrder;
-import com.anvl.order.book.model.SellOrder;
+import com.anvl.order.book.model.Order;
 
 /**
  * @author vaibhavkgupta
@@ -14,8 +13,8 @@ import com.anvl.order.book.model.SellOrder;
  */
 public interface OrderMatchingService {
 
-	ResponseEntity<?> buyOrder(BuyOrder order);
-	
-	ResponseEntity<?> sellOrder(SellOrder order);
-	
+	ResponseEntity<?> buyOrder(Order order);
+
+	ResponseEntity<?> sellOrder(Order order);
+
 }
